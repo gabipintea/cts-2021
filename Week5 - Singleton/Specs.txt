@@ -6,3 +6,5 @@ solution that will provide
 - programmers implementing those modules cannot build multiple objects associated with 
 the database connection
 - the client must use a unique object to take care of the connection to the database
+- the app will use different databases for prod and dev. The connections to those db's must be unique
+without the overhead of creating multiple singleton classes.
