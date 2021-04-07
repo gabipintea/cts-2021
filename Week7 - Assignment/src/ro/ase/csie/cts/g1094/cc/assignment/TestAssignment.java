@@ -1,12 +1,17 @@
 package ro.ase.csie.cts.g1094.cc.assignment;
 
+import java.util.ArrayList;
+
 public class TestAssignment {
+	
+	public static ArrayList<Account> accounts = new ArrayList<>();
 
 	public static void main(String[] args) throws Exception {
 		
-		Account account = new Account(1000.0, 2.0, 200, AccountType.BUDGET);
+		Account account = new Account(100.0, 0.01, 800, AccountType.PREMIUM);
 		
-		System.out.println(account.toString());
+		accounts.add(account);
+		System.out.println(Account.computeTotalFee(accounts));		
 
 	}
 

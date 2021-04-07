@@ -1,6 +1,5 @@
-Code Review
+Code Review with negative examples from the original Account.java
 
-Problems
 1 Formatting
 	- Indentation
 		e.g. calculate()
@@ -56,7 +55,7 @@ Problems
 			e.g. computeTotalFee() instead of calculate()
 			
 3 Classes
-	- Single Responsibility and class relevance + KISS - do not calculate fees in Account class
+	- Single Responsibility and class relevance + KISS - let services make financial computations
 	
 4 Functions
 	- Should be small - e.g. 12 lines of code in the biggest function here
@@ -85,7 +84,7 @@ Problems
 		e.g. int STANDARD=0,BUDGET=1,PREMIUM=2,SUPER_PREMIUM=3;
 
 7 Exceptions
-	- Use standard exceptions and relevant messages
+	- Favor the use of standard exceptions but relevant messages and extends
 		e.g. value<0 Exception thrown
 	
 	
@@ -106,7 +105,7 @@ Phase 1 - Formatting and Naming Conventions
 - Rename everything lowerCamelCase
 - Add 'this' keyword everywhere
 - Rename rate to a more suggestive interestRate
-- Rename temp to a more suggestive yearDays and use it
+- Rename temp to a more suggestive YEAR_DAYS, make it static constant and use it in computation
 - Rename loan() to getLoanValue()
 - Rename setValue() to setLoanValue()
 - Rename calculate() to computeTotalFee()
@@ -117,14 +116,15 @@ Phase 2 - KISS, DRY, YAGNI, SRP, Exceptions, Validations
 - Remove useless print(), use toString()
 - Remove useless prints in getters, use toString()
 - Use setLoanValue() in constructor also
-- Use standard exceptions in with relevant message
+- Use standard exception UnsupportedOperationException as base class for specific Exceptions with relevant message
 - Group types in enum and in this way avoid erroneous int input for account type
 - Use BROKER_FEE as a member of accountType for easily adding new types and avoid changing if conditions in computeTotalFee()
 - Use wrappers instead of primitives for parameters
 - Add all attributes to input parameters of the constructor
-- Compute fee for the current instance only in a method computeFee()
+- Compute fee for the current instance only => computeFee()
 - Split the complex math in different functions => computeInterest()
 
-Phase 3 - DIP and Services 
-- Move validations in ValidatorService using interfaces
-- Move financial computations and getMonthlyRate() in CreditService using interfaces and remove comments
+Phase 3 - DIP and Services
+- Move validations in ValidatorService
+- Move financial computations and getMonthlyRate() in CreditService //TODO
+- Use Dependency Inversion with CreditServiceInterface to stop instance dependence //TODO
