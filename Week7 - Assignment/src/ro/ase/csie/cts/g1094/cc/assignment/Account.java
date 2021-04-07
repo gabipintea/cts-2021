@@ -60,7 +60,7 @@ public class Account implements LeadInterface{
 		return	totalFee;
 	}
 
-	public Account(Double loanValue, Double interestRate, Integer daysActive, AccountType accountType) throws InvalidDaysException {
+	public Account(Double loanValue, Double interestRate, Integer daysActive, AccountType accountType) throws UnsupportedOperationException {
 		setLoanValue(loanValue);
 		if( daysActive < 0 ) {
 			throw new InvalidDaysException("Active days must be a positive value");
