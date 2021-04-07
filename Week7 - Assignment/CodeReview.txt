@@ -2,10 +2,11 @@ Code Review
 
 Problems
 1 Formatting
-	- public static double calculate(Account[] 	accounts); bad indentation of the entire method
+	- bad indentation
+		e.g. calculate()
 	- TAB spacing and whitespaces mixed across the entire code
 		e.g. attributes declaration, for	(int	i=0;i<accounts.length;i++)
-	- inconsistent use of spacing in declarations, enumerations, between operands
+	- inconsistent use of spacing in declarations, enumerations, between operands, between rows (readability)
 		e.g. if(value<0), int vb = 10; double totalFee=0.0; 
 			 daysActive,account_Type; 
 			 return "Loan: "+this.loan_value+"; i<accounts.length; ...==Account.PREMIUM||account.account_Type...
@@ -44,19 +45,19 @@ Problems
 2 Naming conventions
 	- mixed naming ways
 		e.g. loan_value, daysActive, account_Type, to_string()
-	- non-suggestive names
-		e.g. loan(), setValue(), print(), calculate(), temp
+	- not suggestive enough names
+		e.g. rate,  loan(), setValue(), print(), calculate(), temp
 	- Meaningful Names
 		- Use Intention-Revealing Names
 			e.g. getLoan() instead of loan()
 		- Pick one word per concept
 			e.g. getLoan() and getRate() for getters instead of just loan()
 		- Use Solution/Problem Domanin Names
-			e.g. computeTotalFees() instead of calculate()
+			e.g. computeTotalFee() instead of calculate()
 			
 3 Classes
 	- Should be small - here are ~66 lines
-	- Single Responsability - do not calculate fees in Account class
+	- Single Responsability and class relevance + KISS - do not calculate fees in Account class
 	
 4 Functions
 	- Should be small - here are ~12 lines
@@ -66,6 +67,7 @@ Problems
 	- YAGNI - e.g. print() function
 	- Use wrapper classes instead of primitives as parameters, as much as possible
 		e.g. public Account(double value, double rate, int account_Type);
+	- Better override toString() than creating a to_string()
 	
 5 Size of instructions
 	e.g. totalFee+=.0125	*	(	//	1.25%	broker's	fee
@@ -79,7 +81,7 @@ Problems
 	- Further explanations for readability of the functions may be a case of function splitting
 			//	1.25%	broker's	fee
 		
-	- No hard coding of values. Use constants/configuration values instead
+	- No hard-coding of values. Use constants/configuration values instead
 		e.g. int temp = 365; totalFee+=.0125	*	(	//	1.25%	broker's	fee ...
 		
 	- Group similar values under enums, instead of int constants
@@ -98,3 +100,17 @@ Problems
 	- Validation for all parameters
 		e.g. rate, account_type in constructor
 	- Usage of wrappers instead of primitives
+	
+	
+Phase 1 - Formatting and Naming Conventions
+- Indentation
+- Brackets Java-like styling
+- TAB and whitespaces and row spacing
+- Rename everything lowerCamelCase
+- Add 'this' keyword everywhere
+- Rename rate to a more suggestive interestRate
+- Rename loan() to getLoanValue()
+- Rename setValue() to setLoanValue()
+- Rename calculate() to computeTotalFee()
+- Override toString() instead of using to_string()
+- Remove hard-coded values aka "magic numbers" and associated comment (broker's fee)
