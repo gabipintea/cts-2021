@@ -2,74 +2,71 @@ Code Review
 
 Problems
 1 Formatting
-	- bad indentation
+	- Indentation
 		e.g. calculate()
-	- TAB spacing and whitespaces mixed across the entire code
+	- TAB spacing and white-spaces should not be mixed across the entire code
 		e.g. attributes declaration, for	(int	i=0;i<accounts.length;i++)
-	- inconsistent use of spacing in declarations, enumerations, between operands, between rows (readability)
+	- Spacing should be consistent in declarations, enumerations, between operands, between rows (readability)
 		e.g. if(value<0), int vb = 10; double totalFee=0.0; 
 			 daysActive,account_Type; 
 			 return "Loan: "+this.loan_value+"; i<accounts.length; ...==Account.PREMIUM||account.account_Type...
-	- inconsistent use of 'this' keyword
+	- Usage of 'this' keyword should be consistent across the entire code
 		e.g. this.loan_value and return loan_value; or rate and return this.rate; or to_string() return statement
-	- inconsistent and mixed use of bracket positions
+	- Bracket appearance and positioning style should be consistent across the entire code
 		e.g. - either missing for one instruction
 			
-			 if(value<0) 
-			 	throw new Exception();
+				 if(value<0) 
+				 	throw new Exception();
 			 	
-			 - or opening bracket position style (Java-like vs C/C++ -like) mixed across code
+			 - or opening bracket position style (Java-like vs C/C++ -like)
 			 
-			 public void print() {
-			 	...
-			 }
-			 
-			 public static double calculate(Account[] 	accounts)
-			 {
-			 	...
-			 }
-			 
-			 for	(int	i=0;i<accounts.length;i++)	{
-			 	...
-			 }
-			 
-			 
-			 else
-			 {
-				 loan_value = value;
-			 }
+				 public void print() {
+				 	...
+				 }
+				 
+				 public static double calculate(Account[] 	accounts)
+				 {
+				 	...
+				 }
+				 
+				 for	(int	i=0;i<accounts.length;i++)	{
+				 	...
+				 }
+				 
+				 
+				 else
+				 {
+					 loan_value = value;
+				 }
 			 
 			 
 			 
 		
 2 Naming conventions
-	- mixed naming ways
+	- Usage of only one naming convention
 		e.g. loan_value, daysActive, account_Type, to_string()
-	- not suggestive enough names
+	- Suggestive names
 		e.g. rate,  loan(), setValue(), print(), calculate(), temp
 	- Meaningful Names
 		- Use Intention-Revealing Names
 			e.g. getLoan() instead of loan()
 		- Pick one word per concept
 			e.g. getLoan() and getRate() for getters instead of just loan()
-		- Use Solution/Problem Domanin Names
+		- Use Solution/Problem Domain Names
 			e.g. computeTotalFee() instead of calculate()
 			
 3 Classes
-	- Should be small - here are ~66 lines
-	- Single Responsability and class relevance + KISS - do not calculate fees in Account class
+	- Single Responsibility and class relevance + KISS - do not calculate fees in Account class
 	
 4 Functions
-	- Should be small - here are ~12 lines
+	- Should be small - e.g. 12 lines of code in the biggest function here
 	- Do one Thing (KISS) - e.g. getters also printing
 	- DRY - e.g. setValue() for loan_value repeating in constructor
 			   getMonthlyRate() function duplicated across all classes, as requested by lead
-	- YAGNI - e.g. print() function
-	- Use wrapper classes instead of primitives as parameters, as much as possible
-		e.g. public Account(double value, double rate, int account_Type);
+	- YAGNI - e.g. print() function		
 	- Better override toString() than creating a to_string()
 	
-5 Size of instructions
+5 Size of instructions and SRP
 	e.g. totalFee+=.0125	*	(	//	1.25%	broker's	fee
 			account.loan_value*Math.pow(account.rate,(account.daysActive/365)) - account.loan_value);
 		return "Loan: "+this.loan_value+"; rate: "+this.rate+"; days active:"+daysActive+"; Type: "+account_Type+";";
@@ -88,18 +85,18 @@ Problems
 		e.g. int STANDARD=0,BUDGET=1,PREMIUM=2,SUPER_PREMIUM=3;
 
 7 Exceptions
-	- Use standard and relevant exceptions - e.g. value<0 Exception thrown
-	- Don't ignore exceptions - treat them all
+	- Use standard exceptions and relevant messages
+		e.g. value<0 Exception thrown
 	
 	
 8 Fundamentals
 	- Security and privileges
-		e.g. public attributes, public methods, no private/protected members, no complete set of accessor methods
+		e.g. public attributes, public methods, no private/protected members, no complete set of accessing methods
 
 9 Input validation
-	- Validation for all parameters
-		e.g. rate, account_type in constructor
-	- Usage of wrappers instead of primitives
+	- Validation for parameters
+	- Usage of wrappers instead of primitives for input parameters
+		e.g. public Account(double value, double rate, int account_Type);
 	
 	
 Phase 1 - Formatting and Naming Conventions
@@ -109,8 +106,25 @@ Phase 1 - Formatting and Naming Conventions
 - Rename everything lowerCamelCase
 - Add 'this' keyword everywhere
 - Rename rate to a more suggestive interestRate
+- Rename temp to a more suggestive yearDays and use it
 - Rename loan() to getLoanValue()
 - Rename setValue() to setLoanValue()
 - Rename calculate() to computeTotalFee()
-- Override toString() instead of using to_string()
-- Remove hard-coded values aka "magic numbers" and associated comment (broker's fee)
+- Override toString() instead of using to_string() and arrange the concatenations to be readable
+- Remove hard-coded values aka "magic numbers" and associated comments (broker's fee)
+
+Phase 2 - KISS, DRY, YAGNI, SRP, Exceptions, Validations
+- Remove useless print(), use toString()
+- Remove useless prints in getters, use toString()
+- Use setLoanValue() in constructor also
+- Use standard exceptions in with relevant message
+- Group types in enum and in this way avoid erroneous int input for account type
+- Use BROKER_FEE as a member of accountType for easily adding new types and avoid changing if conditions in computeTotalFee()
+- Use wrappers instead of primitives for parameters
+- Add all attributes to input parameters of the constructor
+- Compute fee for the current instance only in a method computeFee()
+- Split the complex math in different functions => computeInterest()
+
+Phase 3 - DIP and Services 
+- Move validations in ValidatorService using interfaces
+- Move financial computations and getMonthlyRate() in CreditService using interfaces and remove comments
