@@ -1,0 +1,14 @@
+Title:
+`Design, Implementation and Practical Research on an open-source IoT Home Automation system`
+
+Problem:
+For basic entity creation. there should be a default set of data for creating different entities, in a fast,
+secure way. For developers, there is a testing sand-box, where one should have an easy method to create numerous
+default entities of a specific type.
+
+Advantages:
+- Fast entity creation, for sand-boxing purposes, using default values, or as a fallback
+- The required default data is entered and selected at runtime using correct data for specific entity types
+
+Disadvantages:
+- May create unwanted duplicates or orphaned entities

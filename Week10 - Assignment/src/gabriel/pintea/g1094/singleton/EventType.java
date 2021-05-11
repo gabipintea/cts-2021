@@ -1,0 +1,5 @@
+package gabriel.pintea.g1094.singleton;
+
+public enum EventType {
+	STATE_CHANGED, TIME_CHANGED, SERVICE_REGISTRED, CALL_SERVICE, SERVICE_EXECUTED, COMPONENT_LOADED
+}

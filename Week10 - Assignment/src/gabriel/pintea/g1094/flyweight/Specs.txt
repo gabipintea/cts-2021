@@ -1,0 +1,16 @@
+Title:
+`Design, Implementation and Practical Research on an open-source IoT Home Automation system`
+
+Problem:
+In a specific duration of time, any entity can change states, may be turned on/off, etc. It is not a good idea
+to instantiate the entities everytime, containing all the attributes. A method of grouping and sharing the
+entities and their attributes across manipulations, such as turning on/off, should be implemented.
+
+Advantages:
+- Using the Flyweight, the specific entities are mapped at the very first call of changing their states
+- The entities may be also instantiated at the call moment for a state change
+- The entities are shared with the system, no matter how many state changes are performed
+
+Disadvantages:
+- The Entity ids may change for different reasons, and that may conclude in some redundant, orphaned entities
+in the Map. Some clearing method should be applied

@@ -1,0 +1,14 @@
+Title:
+`Design, Implementation and Practical Research on an open-source IoT Home Automation system`
+
+Problem:
+The Home Automation is based on a variety of entities, like on/off switches (e.g. wall plugs, relays etc.),
+lights (e.g. light bulbs, smart switches, lamps etc.), sensors (e.g. temp/humid, motion etc.). These entities
+should share a common base, and should have a duplicate mechanism for fast creation and adding new devices,
+based on the specifications of existing entities.
+
+Advantages:
+- Fast and low resource duplication of entities in the system
+
+Disadvantages:
+- None

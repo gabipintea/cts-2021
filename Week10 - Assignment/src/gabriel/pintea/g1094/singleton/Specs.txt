@@ -1,0 +1,17 @@
+Title:
+`Design, Implementation and Practical Research on an open-source IoT Home Automation system`
+
+Problem:
+The main central Home Automation does need an `EVENTBUS` which must be accessed by different 
+Smart Entities to send an event on the bus, or vice-versa to read different events on the bus
+for triggering a variety of automations. The event bus allows any integration to fire or listen
+for events. It is the core of everything.The event bus must be run only once and contain all 
+the events, which are created. In order to keep the unique instance and offer access to the bus
+a Singleton can be implemented, as a viable solution.
+
+Advantages:
+- Only one global instance is created
+- Can be publicly accessed by any entity, either Smart Device or automation for read/write operations
+
+Disadvantages:
+- None

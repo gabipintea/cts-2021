@@ -1,0 +1,13 @@
+Title:
+`Design, Implementation and Practical Research on an open-source IoT Home Automation system`
+
+Problem:
+The Home Automation server may be accessed from a variety of different apps and devices, for controlling the
+smart devices. The mobile applications, wall-mounted tablets, or voice assistant must use an API key a.k.a
+Long-Lived-Token, which should be sent with the connection request, to validate the connection is legitimate.
+
+Advantages:
+- The proxy takes care of the access to connection procedures and responds to the API requests.
+
+Disadvantages:
+- None

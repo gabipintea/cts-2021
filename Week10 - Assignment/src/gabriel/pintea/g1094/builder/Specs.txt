@@ -1,0 +1,16 @@
+Title:
+`Design, Implementation and Practical Research on an open-source IoT Home Automation system`
+
+Problem:
+The system must offer the user a way of defining automations, which may have totally different approaches, based on
+multiple triggers, having conditions or not, performing different actions, having numerous attributes. The number of
+elements and the way the automation is built must somehow be standardized. Also, a new feature of the system is the 
+Blueprint section, which should give the users a more easier, convenient, semi-automated way of creating automations, 
+with pre-defined automations, which should require just inputting the right entities.
+
+Advantages:
+- Clear way of building automations with lots of attributes, entity specific and also automation specific attributes,
+but still offering a way of creating a new empty automation with just the required default attributes of an entity.
+
+Disadvantages:
+- None

@@ -1,0 +1,16 @@
+Title:
+`Design, Implementation and Practical Research on an open-source IoT Home Automation system`
+
+Problem:
+The system should integrate different devices from different vendors. For this example, a Philips HUE Smart Lightbulb
+should be integrated, in such a way that it can be used as a generic light entity of the system, using the generic
+methods for a light class entity.
+
+Advantages:
+- Intermediates the commands from the standard generic light entities to the specific vendor options.
+- Does not change the interaction methods with every different vendors' devices, from the client perspective
+
+Disadvantages:
+- Every new integration needs a custom adapter to be implemented
+- There is a possibility that some devices may not have a factory default correspondent for all the generic methods, or
+maybe they have other features, which cannot be implemented yet 

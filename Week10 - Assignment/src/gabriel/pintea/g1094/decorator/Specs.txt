@@ -1,0 +1,13 @@
+Title:
+`Design, Implementation and Practical Research on an open-source IoT Home Automation system`
+
+Problem:
+The system can manage permission for specific entity usage, by different users, or custom cases. There
+should be a dynamic method for changing the behavior of a specific entity and hide it or making it unusable,
+at that specific moment in the process.
+
+Advantages:
+- Dynamically change a entity visibility/usage permission, during execution
+
+Disadvantages:
+- None
